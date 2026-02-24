@@ -15,7 +15,7 @@ class Teacher(models.Model):
         return f"{self.first_name} {self.last_name} - {self.subject}"
     
 class SchoolClass(models.Model):
-    name = models.CharField(max_lenght=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
