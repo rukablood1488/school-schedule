@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Schedule</title>
+</head>
+<body>
+
+<h1>School Schedule Manager</h1>
+
+<h2>Add Subject</h2>
+<form action="/add_subject" method="post">
+    <input type="text" name="name" placeholder="Subject name">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Add Class</h2>
+<form action="/add_class" method="post">
+    <input type="text" name="name" placeholder="Class name">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Add Teacher</h2>
+<form action="/add_teacher" method="post">
+    <input type="text" name="first_name" placeholder="First name">
+    <input type="text" name="last_name" placeholder="Last name">
+    <input type="number" name="subject" placeholder="Subject ID">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Add Student</h2>
+<form action="/add_student" method="post">
+    <input type="text" name="first_name" placeholder="First name">
+    <input type="text" name="last_name" placeholder="Last name">
+    <input type="number" name="class_id" placeholder="Class ID">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Add Lesson</h2>
+<form action="/add_lesson" method="post">
+    <input type="text" name="day" placeholder="Day">
+    <input type="text" name="lesson_number" placeholder="Ordinal number">
+    <input type="number" name="subject" placeholder="Subject ID">
+    <input type="number" name="teacher" placeholder="Teacher ID">
+    <input type="number" name="class_id" placeholder="Class ID">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Add Grade</h2>
+<form action="/add_grade" method="post">
+    <input type="number" name="student" placeholder="Student ID">
+    <input type="number" name="subject" placeholder="Subject ID">
+    <input type="number" name="grade" placeholder="Grade">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Schedule</h2>
+<a href="/schedule">Show Schedule</a>
+
+<hr>
+
+<h2>Diary</h2>
+<a href="/diary">Show Diary</a>
+
+
+</body>
+</html>

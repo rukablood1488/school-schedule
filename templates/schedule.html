@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Schedule</title>
+</head>
+<body>
+
+<h2>Schedule</h2>
+
+<table border="1">
+    <tr>
+        <th>Day</th>
+        <th>Lesson</th>
+        <th>Subject</th>
+        <th>Teacher</th>
+        <th>Class</th>
+    </tr>
+
+    {% for l in lessons %}
+    <tr>
+        <td>{{ l.day }}</td>
+        <td>{{ l.lesson_number }}</td>
+        <td>{{ l.subject.name }}</td>
+        <td>{{ l.teacher.first_name }} {{ l.teacher.last_name }}</td>
+        <td>{{ l.school_class.name }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">Back</a>
+
+</body>
+</html>

@@ -33,7 +33,7 @@ class Schedule(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     school_class = models.ForeignKey(SchoolClass, on_delete=models.CASCADE)
     day = models.CharField(max_length=20)
-    lesson_number = models.IntegerField()
+    lesson_number = models.CharField(max_length=20)
 
     def __str__(self):
         return f"{self.day} - {self.lesson_number} - {self.subject}"
