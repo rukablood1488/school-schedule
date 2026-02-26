@@ -4,7 +4,6 @@ import django
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 django.setup()
@@ -15,18 +14,6 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-class SubjectSchema(BaseModel):
-    id: int | None = None
-    name: str
-
-    class Config:
-        from_attributes = True
-
-
-class TeacherCreateSchema(BaseModel):
-    first_name: str
-    last_name: str
-    subject_id: int
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
@@ -153,7 +140,7 @@ def get_schedule(request: Request):
 def diary(request: Request):
     grades = Grade.objects.select_related(
         "student",
-        "student_school_class",
+        "student__school_class",
         "subject"
     ).all()
 
