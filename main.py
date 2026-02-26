@@ -39,10 +39,28 @@ def add_subject(name: str = Form(...)):
     Subject.objects.create(name=name)
     return RedirectResponse("/", status_code=303)
 
+@app.get("/subjects")
+def get_subjects():
+    subjects = Subject.objects.all()
+
+    return [
+        f"Id: {s.id} | {s.name}"
+        for s in subjects
+    ]
+
 @app.post("/add_class")
 def add_class(name: str = Form(...)):
     SchoolClass.objects.create(name=name)
     return RedirectResponse("/", status_code=303)
+
+@app.get("/classes")
+def get_subjects():
+    classes = SchoolClass.objects.all()
+
+    return [
+        f"Id: {c.id} | {c.name}"
+        for c in classes
+    ]
 
 @app.post("/add_teacher")
 def add_teacher(
@@ -57,6 +75,15 @@ def add_teacher(
     )
     return RedirectResponse("/", status_code=303)
 
+@app.get("/teachers")
+def get_teachers():
+    teachers = Teacher.objects.select_related("subject")
+
+    return [
+        f"Id: {t.id} | {t.first_name} {t.last_name} | Subject: {t.subject.name}"
+        for t in teachers
+    ]
+
 @app.post("/add_student")
 def add_student(
     first_name: str = Form(...),
@@ -69,6 +96,15 @@ def add_student(
         school_class=SchoolClass.objects.get(id=class_id)
     )
     return RedirectResponse("/", status_code=303)
+
+@app.get("/students")
+def get_students():
+    students = Student.objects.select_related("school_class")
+
+    return [
+        f"Id: {s.id} | {s.first_name} {s.last_name} | Class: {s.school_class.name}"
+        for s in students
+    ]
 
 @app.post("/add_lesson")
 def add_lesson(
